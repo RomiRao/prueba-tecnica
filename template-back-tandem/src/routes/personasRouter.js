@@ -1,14 +1,14 @@
-import productController from "../controllers/productController.js";
+import personasController from "../controllers/personasController.js";
 import { Router } from "express";
 
-const productRouter = Router();
+const personasRouter = Router();
 
 // Rutas
-productRouter.get("/", productController.getProduct);
+personasRouter.get("/", personasController.getLista);
 // productRouter.post("/", );
 // productRouter.put("/:id", );
 // productRouter.delete("/:id", );
 // productRouter.get("/:id", traerproductosolo);
 // productRouter.get("/camisas", );
 
-export default productRouter;
+export default personasRouter;

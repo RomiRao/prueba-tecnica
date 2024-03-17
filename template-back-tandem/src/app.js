@@ -3,8 +3,7 @@ import morgan from "morgan";
 import helmet from "helmet";
 import cors from "cors";
 
-import indexRouter from "./routes/indexRouter.js";
-import productRouter from "./routes/productRouter.js";
+import personasRouter from "./routes/personasRouter.js";
 
 const server = express();
 
@@ -29,8 +28,7 @@ server.use(helmet());
 server.use(cors());
 
 // Routes
-server.use("/", indexRouter);
-server.use("/product", productRouter);
+server.use("/personas", personasRouter);
 
 // Error catching endware.
 server.use((err, req, res, next) => {

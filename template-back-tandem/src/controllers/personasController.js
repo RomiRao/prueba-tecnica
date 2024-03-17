@@ -1,7 +1,7 @@
 import { prisma } from "../connection/index.js";
 
 export default {
-    index: async (req, res) => {
+    getLista: async (req, res) => {
         res.status(200).json([
             {
                 id: "1",
