@@ -3,18 +3,16 @@ import morgan from "morgan";
 import helmet from "helmet";
 import cors from "cors";
 
-import indexRouter from "./routes/indexRouter.js";
-import productRouter from "./routes/productRouter.js";
+import personasRouter from "./routes/personasRouter.js";
 
 const server = express();
 
-// Middlewares -> es una funcion que podes ejecutar entre que entra la peticion y que ejecuta o devuelve la informacion, como el useeffect (?)
+// Middlewares
 server.use(express.urlencoded({ extended: true }));
 server.use(express.json({ limit: "50mb" }));
 server.use(morgan("dev")); // messages by console
 server.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-    //el que dice quien puede acceder
+    res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Credentials", "true");
     res.header(
         "Access-Control-Allow-Headers",
@@ -24,14 +22,13 @@ server.use((req, res, next) => {
         "Access-Control-Allow-Methods",
         "GET, POST, OPTIONS, PUT, DELETE"
     );
-    next(); // pasa a la siguiente linea
+    next();
 });
 server.use(helmet());
-server.use(cors()); // configuracion, buscar
+server.use(cors());
 
 // Routes
-server.use("/", indexRouter);
-server.use("/product", productRouter); //el backend se encarga de que mostrar cuando se pide esa url
+server.use("/personas", personasRouter);
 
 // Error catching endware.
 server.use((err, req, res, next) => {
